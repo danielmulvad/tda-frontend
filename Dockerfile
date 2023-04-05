@@ -10,7 +10,6 @@ COPY ./package.json ./package-lock.json ./
 RUN npm install
 COPY ./src ./src
 COPY ./static ./static
-COPY ./.svelte-kit ./.svelte-kit
 COPY ./*.* ./
 RUN ls -la
 RUN npm run build
