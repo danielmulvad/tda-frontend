@@ -1,8 +1,7 @@
-import { PUBLIC_API_BASE_URL } from '$env/static/public';
-
 const api = async (inputUrl: string | URL, init?: RequestInit | undefined): Promise<Response> => {
 	const credentials = init?.credentials || 'include';
-	const url = new URL(inputUrl, PUBLIC_API_BASE_URL);
+	const origin = window.location.origin;
+	const url = new URL(inputUrl, origin);
 	return fetch(url, { ...init, credentials });
 };
 
