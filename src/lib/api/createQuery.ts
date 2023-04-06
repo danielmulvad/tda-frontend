@@ -14,12 +14,16 @@ export const createQuery = <
 	options: CreateQueryOptions<TQueryFnData, TError, TData, TQueryKey>
 ): CreateQueryResult<TData, TError> => {
 	const refetchInterval = options.refetchInterval ?? false;
+	const refetchIntervalInBackground = options.refetchIntervalInBackground ?? false;
+	const refetchOnMount = options.refetchOnMount ?? false;
+	const refetchOnReconnect = options.refetchOnReconnect ?? false;
+	const refetchOnWindowFocus = options.refetchOnWindowFocus ?? false;
 	return sq_createQuery({
 		...options,
 		refetchInterval,
-		refetchIntervalInBackground: true,
-		refetchOnMount: false,
-		refetchOnReconnect: false,
-		refetchOnWindowFocus: false
+		refetchIntervalInBackground,
+		refetchOnMount,
+		refetchOnReconnect,
+		refetchOnWindowFocus
 	});
 };
