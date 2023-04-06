@@ -13,7 +13,7 @@ export const createQuery = <
 >(
 	options: CreateQueryOptions<TQueryFnData, TError, TData, TQueryKey>
 ): CreateQueryResult<TData, TError> => {
-	const refetchInterval = options.refetchInterval || 10 * 1000;
+	const refetchInterval = options.refetchInterval ?? false;
 	return sq_createQuery({
 		...options,
 		refetchInterval,
