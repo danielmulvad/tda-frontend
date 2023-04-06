@@ -17,6 +17,9 @@ export const createQuery = <
 	return sq_createQuery({
 		...options,
 		refetchInterval,
-		refetchIntervalInBackground: true
+		refetchIntervalInBackground: true,
+		refetchOnMount: false,
+		refetchOnReconnect: false,
+		refetchOnWindowFocus: false
 	});
 };
