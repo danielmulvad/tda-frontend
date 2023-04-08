@@ -1,13 +1,6 @@
-<script lang="ts">
-	import LoginButton from '$lib/components/Button/LoginButton/index.svelte';
-</script>
-
 <nav>
 	<ul>
 		<li><a href="/">Home</a></li>
-	</ul>
-	<ul>
-		<li><LoginButton /></li>
 	</ul>
 </nav>
 

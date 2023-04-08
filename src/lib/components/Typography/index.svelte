@@ -4,7 +4,9 @@
 	const body = variant === 'body';
 </script>
 
-<span class:body><slot /></span>
+<span class:body>
+	<slot />
+</span>
 
 <style lang="scss">
 	span {
