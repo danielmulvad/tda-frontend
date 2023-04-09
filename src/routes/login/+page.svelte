@@ -7,11 +7,10 @@
 </div>
 
 <style lang="scss">
-	@import '$lib/theme.scss';
 	.root {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: calc(100vh - $navbar-height);
+		height: 100vh;
 	}
 </style>
