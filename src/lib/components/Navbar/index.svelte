@@ -1,6 +1,6 @@
 <nav>
 	<ul>
-		<li><a href="/">Home</a></li>
+		<li><a href="/">Overview</a></li>
 	</ul>
 </nav>
 

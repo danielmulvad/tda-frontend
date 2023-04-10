@@ -26,3 +26,10 @@
 		</main>
 	</div>
 </QueryClientProvider>
+
+<style>
+	.app {
+		font-family: monaco, monospace;
+		font-size: 0.875rem;
+	}
+</style>
