@@ -16,6 +16,10 @@
 	$: hideNavbar = $page.url.pathname === '/login/';
 </script>
 
+<svelte:head>
+	<title>TradeTracker</title>
+	<meta name="description" content="TradeTracker - private trading journal" />
+</svelte:head>
 <QueryClientProvider {client}>
 	<div class="app">
 		{#if !hideNavbar}
