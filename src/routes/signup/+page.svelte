@@ -12,16 +12,16 @@
 		console.log(value);
 	};
 
-	const handleSignUp = () => {
-		goto('/signup');
+	const handleLogin = () => {
+		goto('/login');
 	};
 </script>
 
 <div class="root">
 	<LoginCard>
-		<Typography variant="title">Login</Typography>
-		<EmailPasswordForm on:submit={handleSubmit}>Login</EmailPasswordForm>
-		<Button color="secondary" fullWidth on:click={handleSignUp}>Sign Up</Button>
+		<Typography variant="title">Sign Up</Typography>
+		<EmailPasswordForm on:submit={handleSubmit}>Sign Up</EmailPasswordForm>
+		<Button color="secondary" fullWidth on:click={handleLogin}>Login</Button>
 	</LoginCard>
 </div>
 

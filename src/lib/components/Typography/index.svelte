@@ -1,10 +1,13 @@
 <script lang="ts">
-	type Variant = 'body';
-	export const variant: Variant = 'body';
+	type Variant = 'body' | 'title';
+
+	export let variant: Variant = 'body';
+
 	const body = variant === 'body';
+	const title = variant === 'title';
 </script>
 
-<span class:body>
+<span class:body class:title>
 	<slot />
 </span>
 
@@ -15,5 +18,9 @@
 	.body {
 		font-size: 1rem;
 		line-height: 1.5;
+	}
+	.title {
+		font-size: 1.5rem;
+		line-height: 1.25;
 	}
 </style>

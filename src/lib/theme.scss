@@ -1,1 +1,78 @@
+$breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px
+);
 $navbar-height: 50px;
+$theme-colors: (
+	primary: (
+		light: #a8c9ff,
+		normal: #3571e8,
+		dark: #004fb3
+	),
+	secondary: (
+		light: #e6e6e6,
+		normal: #8c8c8c,
+		dark: #4d4d4d
+	),
+	success: (
+		light: #abf5d1,
+		normal: #1abc9c,
+		dark: #147f59
+	),
+	info: (
+		light: #a8daf1,
+		normal: #2e86ab,
+		dark: #1b5173
+	),
+	warning: (
+		light: #ffebcc,
+		normal: #e67e22,
+		dark: #9e4a0a
+	),
+	danger: (
+		light: #f5b7b1,
+		normal: #e74c3c,
+		dark: #942a25
+	),
+	light: (
+		light: #f7f7f7,
+		normal: #f0f0f0,
+		dark: #dcdcdc
+	),
+	dark: (
+		light: #7f8c8d,
+		normal: #34495e,
+		dark: #1f2e3d
+	),
+	white: (
+		light: #fff,
+		normal: #fff,
+		dark: #fff
+	),
+	black: (
+		light: #000,
+		normal: #000,
+		dark: #000
+	),
+	gray: (
+		lightest: #f7f7f7,
+		light: #e0e0e0,
+		normal: #bfbfbf,
+		dark: #808080,
+		darkest: #404040
+	)
+);
+
+@function color($color, $variant: normal, $opacity: 1) {
+	@return rgba(map-get(map-get($theme-colors, $color), $variant), $opacity);
+}
+
+@mixin mediaBreakpointUp($breakpoint) {
+	$breakpoint-value: map-get($breakpoints, $breakpoint);
+	@media (min-width: $breakpoint-value) {
+		@content;
+	}
+}

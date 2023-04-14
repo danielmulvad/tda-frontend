@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import Navbar from '$lib/components/Navbar/index.svelte';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
-	import 'normalize.css';
+	import 'normalize.css/normalize.css';
 
 	const client = new QueryClient({
 		defaultOptions: {
@@ -12,8 +12,9 @@
 			}
 		}
 	});
-
-	$: hideNavbar = $page.url.pathname === '/login/';
+	$: isPathnameLoginPage = $page.url.pathname === '/login/';
+	$: isPathnameSignupPage = $page.url.pathname === '/signup/';
+	$: hideNavbar = isPathnameLoginPage || isPathnameSignupPage;
 </script>
 
 <svelte:head>
@@ -31,7 +32,10 @@
 	</div>
 </QueryClientProvider>
 
-<style>
+<style lang="scss">
+	:global(*) {
+		box-sizing: border-box;
+	}
 	.app {
 		font-family: monaco, monospace;
 		font-size: 0.875rem;
