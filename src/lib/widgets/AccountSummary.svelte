@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { tda_get_accounts } from '$lib/api/queries/tda_get_accounts';
+	import { tda_get_accounts } from '$lib/api/queries';
 	import Card from '$lib/components/Card/index.svelte';
 	const query = tda_get_accounts();
 	query.subscribe((data) => {

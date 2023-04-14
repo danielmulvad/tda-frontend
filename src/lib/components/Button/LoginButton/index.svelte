@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { tda_get_authorization_url } from '$lib/api/queries/tda_get_authorization_url';
+	import { tda_get_authorization_url } from '$lib/api/queries';
 	import Button from '$lib/components/Button/index.svelte';
 
 	const authorization_url_query = tda_get_authorization_url();

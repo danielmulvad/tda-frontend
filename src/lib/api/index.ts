@@ -33,10 +33,10 @@ export const get = async (url: string, init?: RequestInit | undefined): Promise<
 	return api(url, { ...init, method: 'GET' });
 };
 
-export const post = async (url: string, init?: RequestInit | undefined): Promise<Response> => {
+export const post = async <const B extends object>(url: string, body: B, init?: RequestInit | undefined): Promise<Response> => {
 	const headers = {
 		...init?.headers,
 		'Content-Type': 'application/json'
 	};
-	return api(url, { ...init, headers, method: 'POST' });
+	return api(url, { ...init, headers, method: 'POST', body: JSON.stringify(body) });
 };
