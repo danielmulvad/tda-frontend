@@ -8,11 +8,11 @@ const api = async (inputUrl: string | URL, init?: RequestInit | undefined): Prom
 	const envBaseUrl = env?.['PUBLIC_API_BASE_URL'] || '';
 	const pageObj = getStore(page);
 	const origin = envBaseUrl.length > 0 ? envBaseUrl : pageObj.url.origin;
-	const url = new URL(inputUrl, origin);
+	const url = new URL(`/api${inputUrl}`, origin);
 	const fetchResponse = await fetch(url, { ...init, credentials });
 	if (fetchResponse.status === 401 && import.meta.env.DEV) {
 		const refresh_token = env?.['PUBLIC_API_DEVELOPMENT_REFRESH_TOKEN'] || '';
-		const response = await post('/api/auth/providers/tda', {
+		const response = await post('/auth/providers/tda', {
 			body: JSON.stringify({
 				refresh_token
 			})
