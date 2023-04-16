@@ -5,6 +5,8 @@
 	import Turnstile from '$lib/components/Turnstile/index.svelte';
 	import { derived, writable } from 'svelte/store';
 
+	export let showTurnstile: boolean = true;
+
 	const username = writable('');
 	const password = writable('');
 	const usernameTouched = writable(false);
@@ -19,7 +21,7 @@
 			passwordTouched.set(true);
 		}
 	});
-	const shouldRender = derived([usernameTouched, passwordTouched], ([u, p]) => u && p);
+	const shouldRender = derived([usernameTouched, passwordTouched], ([u, p]) => u && p && showTurnstile);
 </script>
 
 <form on:submit|preventDefault|trusted>

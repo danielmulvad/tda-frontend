@@ -23,7 +23,7 @@
 <div class="root">
 	<LoginCard>
 		<Typography variant="title">Login</Typography>
-		<EmailPasswordForm on:submit={handleSubmit}>Login</EmailPasswordForm>
+		<EmailPasswordForm showTurnstile={false} on:submit={handleSubmit}>Login</EmailPasswordForm>
 		<Button color="secondary" disabled={$login.isLoading} fullWidth on:click={handleSignUp}>Sign Up</Button>
 	</LoginCard>
 </div>
