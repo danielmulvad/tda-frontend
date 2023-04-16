@@ -11,7 +11,7 @@ export type Get_Authorization_Url = z.infer<typeof schema>;
 const validate_get_authorization_url = async (data: unknown) => await schema.parseAsync(data);
 
 const get_authorization_url = async (): Promise<Get_Authorization_Url> => {
-	const response = await get('/api/auth/providers/tda', {
+	const response = await get('/auth/providers/tda', {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -22,8 +22,4 @@ const get_authorization_url = async (): Promise<Get_Authorization_Url> => {
 	return data;
 };
 
-export const tda_get_authorization_url = () =>
-	createQuery({
-		queryFn: get_authorization_url,
-		queryKey: ['tda_get_authorization_url']
-	});
+export const tda_get_authorization_url = createQuery(['tda_get_authorization_url'], get_authorization_url);

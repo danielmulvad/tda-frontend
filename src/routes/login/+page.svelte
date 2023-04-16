@@ -5,14 +5,28 @@
 	import LoginCard from '$lib/components/Card/LoginCard/index.svelte';
 	import Typography from '$lib/components/Typography/index.svelte';
 	import EmailPasswordForm from '$lib/components/forms/EmailPasswordForm.svelte';
+	import { z } from 'zod';
 
-	const login = loginMutation();
+	const submitFormSchema = z.object({
+		email: z.string().email(),
+		password: z.string().min(8)
+	});
+
+	const login = loginMutation({
+		onSuccess: () => {
+			goto('/');
+		}
+	});
 
 	const handleSubmit = (event: Event) => {
 		const form = event.target as HTMLFormElement;
 		const data = new FormData(form);
-		const value = Object.fromEntries(data.entries()) as { email: string; password: string };
-		$login.mutate(value);
+		const value = Object.fromEntries(data.entries());
+		const validatedValues = submitFormSchema.safeParse(value);
+		if (!validatedValues.success) {
+			return;
+		}
+		$login.mutate(validatedValues.data);
 	};
 
 	const handleSignUp = () => {

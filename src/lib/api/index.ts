@@ -13,9 +13,7 @@ const api = async (inputUrl: string | URL, init?: RequestInit | undefined): Prom
 	if (fetchResponse.status === 401 && import.meta.env.DEV) {
 		const refresh_token = env?.['PUBLIC_API_DEVELOPMENT_REFRESH_TOKEN'] || '';
 		const response = await post('/auth/providers/tda', {
-			body: JSON.stringify({
-				refresh_token
-			})
+			refresh_token
 		});
 		const json = await response.json();
 		if (document.cookie.includes('refresh_token=')) {

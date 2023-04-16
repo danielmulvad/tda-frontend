@@ -6,4 +6,4 @@ type Body = {
 	password: string;
 };
 
-export const loginMutation = () => createMutation(['login'], (body: Body) => post('/auth/providers/tradetracker/signin', body));
+export const loginMutation = createMutation(['login'], (body: Body) => post('/auth/providers/tradetracker/signin', body));
