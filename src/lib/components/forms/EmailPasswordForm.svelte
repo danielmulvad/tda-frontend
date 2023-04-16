@@ -7,12 +7,24 @@
 
 	const username = writable('');
 	const password = writable('');
-	const shouldRender = derived([username, password], ([u, p]) => u.length > 0 && p.length > 0);
+	const usernameTouched = writable(false);
+	const passwordTouched = writable(false);
+	username.subscribe((value) => {
+		if (value.length > 0) {
+			usernameTouched.set(true);
+		}
+	});
+	password.subscribe((value) => {
+		if (value.length > 0) {
+			passwordTouched.set(true);
+		}
+	});
+	const shouldRender = derived([usernameTouched, passwordTouched], ([u, p]) => u && p);
 </script>
 
 <form on:submit|preventDefault|trusted>
-	<Input name="email" autocomplete="username" placeholder="Email" bind:value={$username} />
-	<Input name="password" autocomplete="current-password" placeholder="Password" bind:value={$password} />
+	<Input name="email" type="email" autocomplete="username" placeholder="Email" bind:value={$username} />
+	<Input name="password" type="password" autocomplete="current-password" placeholder="Password" bind:value={$password} />
 	<Turnstile shouldRender={$shouldRender} siteKey={PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY} theme="light" />
 	<Button type="submit"><slot /></Button>
 </form>
