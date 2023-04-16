@@ -3,6 +3,7 @@
 
 	export let siteKey: string;
 	export let theme: 'auto' | 'light' | 'dark' = 'auto';
+	export let shouldRender: boolean = true;
 
 	let loaded = false;
 	let mounted = false;
@@ -38,6 +39,6 @@
 	{/if}
 </svelte:head>
 
-{#if loaded && mounted}
+{#if loaded && mounted && shouldRender}
 	<div use:turnstile />
 {/if}
