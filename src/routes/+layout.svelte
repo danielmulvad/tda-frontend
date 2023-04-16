@@ -33,9 +33,6 @@
 </QueryClientProvider>
 
 <style lang="scss">
-	:global(*) {
-		box-sizing: border-box;
-	}
 	.app {
 		font-family: monaco, monospace;
 		font-size: 0.875rem;
