@@ -36,14 +36,13 @@
 
 <div class="root">
 	<LoginCard>
-		<Typography variant="title">Sign Up</Typography>
+		<Typography variant="lg">Sign Up</Typography>
 		<EmailPasswordForm on:submit={handleSubmit}>Sign Up</EmailPasswordForm>
 		<Button color="secondary" disabled={$signup.isLoading} fullWidth on:click={handleLogin}>Login</Button>
 	</LoginCard>
 </div>
 
 <style lang="scss">
-	@import '$lib/theme.scss';
 	.root {
 		display: flex;
 		justify-content: center;

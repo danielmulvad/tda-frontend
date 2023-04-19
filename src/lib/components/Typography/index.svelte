@@ -1,26 +1,33 @@
 <script lang="ts">
-	type Variant = 'body' | 'title';
+	type Variant = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-	export let variant: Variant = 'body';
+	export let variant: Variant = 'md';
 
-	const body = variant === 'body';
-	const title = variant === 'title';
+	const xs = variant === 'xs';
+	const sm = variant === 'sm';
+	const md = variant === 'md';
+	const lg = variant === 'lg';
+	const xl = variant === 'xl';
 </script>
 
-<span class:body class:title>
+<span class:xs class:sm class:md class:lg class:xl>
 	<slot />
 </span>
 
 <style lang="scss">
-	span {
-		font-family: inherit;
+	.xs {
+		font-size: var(--font-size-xs);
 	}
-	.body {
-		font-size: 1rem;
-		line-height: 1.5;
+	.sm {
+		font-size: var(--font-size-sm);
 	}
-	.title {
-		font-size: 1.5rem;
-		line-height: 1.25;
+	.md {
+		font-size: var(--font-size-md);
+	}
+	.lg {
+		font-size: var(--font-size-lg);
+	}
+	.xl {
+		font-size: var(--font-size-xl);
 	}
 </style>

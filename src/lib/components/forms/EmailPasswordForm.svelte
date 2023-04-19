@@ -22,17 +22,17 @@
 		}
 	});
 	const shouldRender = derived([usernameTouched, passwordTouched], ([u, p]) => u && p && showTurnstile);
+	const buttonDisabled = derived([username, password], ([u, p]) => u.length === 0 || p.length === 0);
 </script>
 
 <form on:submit|preventDefault|trusted>
 	<Input name="email" type="email" autocomplete="username" placeholder="Email" bind:value={$username} />
 	<Input name="password" type="password" autocomplete="current-password" placeholder="Password" bind:value={$password} />
 	<Turnstile shouldRender={$shouldRender} siteKey={PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY} theme="light" />
-	<Button type="submit"><slot /></Button>
+	<Button type="submit" disabled={$buttonDisabled}><slot /></Button>
 </form>
 
 <style lang="scss">
-	@import '$lib/theme.scss';
 	form {
 		display: flex;
 		flex-direction: column;

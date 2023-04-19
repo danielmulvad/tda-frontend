@@ -33,6 +33,7 @@
 </QueryClientProvider>
 
 <style lang="scss">
+	@import './layout.scss';
 	.app {
 		font-family: monaco, monospace;
 		font-size: 0.875rem;

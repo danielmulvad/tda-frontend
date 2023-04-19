@@ -1,0 +1,92 @@
+// Color Variables
+// Background
+$background-light: hsl(0 0% 100%);
+$background-dark: hsl(224 71% 4%);
+// Border
+$border-light: hsl(214 31% 91%);
+$border-dark: hsl(216 34% 17%);
+// Foreground
+$foreground-light: hsl(222 47% 11%);
+$foreground-dark: hsl(213 31% 91%);
+// Primary
+$primary-light: hsl(222 47% 11%);
+$primary-focus-light: hsl(222 47% 31%);
+$primary-hover-light: hsl(222 47% 21%);
+$primary-dark: hsl(210 40% 98%);
+$primary-focus-dark: hsl(210 40% 78%);
+$primary-hover-dark: hsl(210 40% 88%);
+$primary-foreground-light: hsl(210 40% 98%);
+$primary-foreground-dark: hsl(222 47% 1%);
+// Secondary
+$secondary-light: hsl(210 40% 96%);
+$secondary-focus-light: hsl(210 40% 76%);
+$secondary-hover-light: hsl(210 40% 86%);
+$secondary-dark: hsl(222 47% 11%);
+$secondary-focus-dark: hsl(222 47% 31%);
+$secondary-hover-dark: hsl(222 47% 21%);
+$secondary-foreground-light: hsl(222 47% 11%);
+$secondary-foreground-dark: hsl(210 40% 98%);
+// Card
+$card-light: hsl(0 0% 100%);
+$card-foreground-light: hsl(222 47% 11%);
+$card-shadow-light: 0 calc($scale/16) calc($scale/8) 0 rgba(0, 0, 0, 0.05);
+$card-dark: hsl(224 71% 4%);
+$card-foreground-dark: hsl(213 31% 91%);
+$card-shadow-dark: 0 calc($scale/16) calc($scale/8) 0 rgba(0, 0, 0, 0.05);
+
+$input-light: hsl(214 31% 91%);
+$input-dark: hsl(216 34% 17%);
+
+:root {
+	// Theme
+	--background: #{$background-light};
+	--border: #{$border-light};
+	--foreground: #{$foreground-light};
+	--primary: #{$primary-light};
+	--primary-foreground: #{$primary-foreground-light};
+	--primary-focus: #{$primary-focus-light};
+	--primary-hover: #{$primary-hover-light};
+	--secondary: #{$secondary-light};
+	--secondary-foreground: #{$secondary-foreground-light};
+	// Components
+	// Card
+	--card: #{$card-light};
+	--card-foreground: #{$card-foreground-light};
+	--card-shadow: #{$card-shadow-light};
+	// Input
+	--input: #{$input-light};
+	// Constants
+	@include themeConstants();
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		// Theme
+		--background: #{$background-dark};
+		--border: #{$border-dark};
+		--foreground: #{$foreground-dark};
+		--primary: #{$primary-dark};
+		--primary-foreground: #{$primary-foreground-dark};
+		--primary-focus: #{$primary-focus-dark};
+		--primary-hover: #{$primary-hover-dark};
+		--secondary: #{$secondary-dark};
+		--secondary-foreground: #{$secondary-foreground-dark};
+		// Components
+		// Card
+		--card: #{$card-dark};
+		--card-foreground: #{$card-foreground-dark};
+		--card-shadow: #{$card-shadow-dark};
+		// Input
+		--input: #{$input-dark};
+		// Constants
+		@include themeConstants();
+	}
+}
+
+:global(*) {
+	box-sizing: border-box;
+}
+:global(body) {
+	background: var(--background);
+	color: var(--foreground);
+}

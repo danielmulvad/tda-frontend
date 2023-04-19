@@ -1,14 +1,20 @@
-<div class="root">
+<script lang="ts">
+	export const padding: number = 1;
+	export const radius: number = 0.5;
+
+	const paddingStyle = `padding: calc(var(--scale) * ${padding});`;
+	const radiusStyle = `border-radius: calc(var(--scale) * ${radius});`;
+</script>
+
+<div style="{paddingStyle} {radiusStyle}">
 	<slot />
 </div>
 
 <style lang="scss">
-	@import '$lib/theme.scss';
-	.root {
-		background: #fff;
-		border: 1px solid color(light, dark);
-		border-radius: 0.5rem;
-		box-shadow: 0 1px 3px color(black, normal, 0.12), 0 1px 2px color(black, normal, 0.24);
-		padding: 1rem;
+	div {
+		background: var(--card);
+		border: calc(var(--scale) / 16) solid var(--border);
+		box-shadow: var(--card-shadow);
+		color: var(--card-foreground);
 	}
 </style>

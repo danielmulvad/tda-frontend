@@ -1,0 +1,35 @@
+// Theme Variables
+$breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px
+);
+
+// Constant Variables
+$scale: 1rem;
+$font-size-xs: calc($scale * 0.75);
+$font-size-sm: calc($scale * 0.875);
+$font-size-md: calc($scale * 1);
+$font-size-lg: calc($scale * 1.5);
+$font-size-xl: calc($scale * 2);
+
+// Component Variables
+$navbar-height: calc($scale * 3.125);
+
+@mixin themeConstants {
+	--font-size-xs: #{$font-size-xs};
+	--font-size-sm: #{$font-size-sm};
+	--font-size-md: #{$font-size-md};
+	--font-size-lg: #{$font-size-lg};
+	--font-size-xl: #{$font-size-xl};
+	--scale: #{$scale};
+}
+
+@mixin mediaBreakpointUp($breakpoint) {
+	$breakpoint-value: map-get($breakpoints, $breakpoint);
+	@media (min-width: $breakpoint-value) {
+		@content;
+	}
+}

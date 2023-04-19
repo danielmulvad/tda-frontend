@@ -1,18 +1,18 @@
 <nav>
 	<ul>
-		<li><a href="/">Overview</a></li>
+		<li><a href="/">TradeTracker</a></li>
 	</ul>
 </nav>
 
 <style lang="scss">
-	@import '$lib/theme.scss';
 	nav {
-		background: #333;
+		background: var(--background);
+		border-bottom: 1px solid var(--border);
 		color: #fff;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: $navbar-height;
+		height: calc($navbar-height - 1px);
 		padding: 0;
 	}
 
@@ -28,7 +28,7 @@
 	}
 
 	a {
-		color: #fff;
+		color: var(--foreground);
 		text-decoration: none;
 	}
 </style>

@@ -14,45 +14,51 @@
 <button class:fullWidth class:primary class:secondary on:click {disabled} {type}><slot /></button>
 
 <style lang="scss">
-	@import '$lib/theme.scss';
-
 	button {
-		padding: 0.5rem;
+		padding: calc(var(--scale) * 0.5);
 		border: none;
-		border-radius: 4px;
-		color: #fff;
+		border-radius: calc(var(--scale) * 0.5);
 		cursor: pointer;
-		transition: background-color 0.3s;
+		font-size: var(--font-size-md);
+		transition: background 0.3s;
 		outline: none;
 	}
-	button:disabled {
+	.primary {
+		background: var(--primary);
+		color: var(--primary-foreground);
+	}
+
+	.primary:focus {
+		background: var(--primary-focus);
+	}
+	.primary:hover {
+		background: var(--primary-hover);
+	}
+	.primary:disabled {
+		&:focus,
+		&:hover {
+			background: var(--primary);
+		}
+		opacity: 0.5;
+	}
+	.secondary {
+		background: var(--secondary);
+		color: var(--secondary-foreground);
+	}
+	.secondary:focus {
+		background: var(--secondary-focus);
+	}
+	.secondary:hover {
+		background: var(--secondary-hover);
+	}
+	.secondary:disabled {
+		&:focus,
+		&:hover {
+			background: var(--secondary);
+		}
 		opacity: 0.5;
 	}
 	.fullWidth {
 		width: 100%;
-	}
-	.primary {
-		background-color: color(primary);
-		&:focus {
-			box-shadow: 0 0 0 2px color(primary, light);
-		}
-		&:hover {
-			background-color: color(primary, dark);
-		}
-		&:disabled {
-			background-color: color(primary);
-		}
-	}
-	.secondary {
-		background-color: color(secondary);
-		&:focus {
-			box-shadow: 0 0 0 2px color(secondary, light);
-		}
-		&:hover {
-			background-color: color(secondary, dark);
-		}
-		&:disabled {
-			background-color: color(secondary);
-		}
 	}
 </style>

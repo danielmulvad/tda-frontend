@@ -8,7 +8,6 @@
 </div>
 
 <style lang="scss">
-	@import '$lib/theme.scss';
 	.root {
 		display: flex;
 		align-items: center;
