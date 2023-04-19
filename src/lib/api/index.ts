@@ -1,3 +1,4 @@
+import { goto } from '$app/navigation';
 import { page } from '$app/stores';
 import { env } from '$env/dynamic/public';
 import { get as getStore } from 'svelte/store';
@@ -7,8 +8,14 @@ const api = async (inputUrl: string | URL, init?: RequestInit | undefined): Prom
 	const pageObj = getStore(page);
 	const origin = env?.['PUBLIC_API_BASE_URL'] ?? pageObj.url.origin;
 	const url = new URL(`/api${inputUrl}`, origin);
-	const fetchResponse = await fetch(url, { ...init, credentials });
-	return fetchResponse;
+	const response = await fetch(url, { ...init, credentials });
+	if (!response.ok) {
+		throw new Error(response.statusText);
+	}
+	if (response.status === 401) {
+		goto('/login', { replaceState: true });
+	}
+	return response;
 };
 
 export const get = async (url: string, init?: RequestInit | undefined): Promise<Response> => {

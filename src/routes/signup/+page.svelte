@@ -5,9 +5,11 @@
 	import LoginCard from '$lib/components/Card/LoginCard/index.svelte';
 	import Typography from '$lib/components/Typography/index.svelte';
 	import EmailPasswordForm from '$lib/components/forms/EmailPasswordForm.svelte';
+	import { derived, writable } from 'svelte/store';
 	import { z } from 'zod';
 
 	const submitFormSchema = z.object({
+		'cf-turnstile-response': z.string().optional(),
 		email: z.string().email(),
 		password: z.string().min(8)
 	});
@@ -17,6 +19,8 @@
 			goto('/login');
 		}
 	});
+	const username = writable('');
+	const password = writable('');
 
 	const handleSubmit = (event: Event) => {
 		const form = event.target as HTMLFormElement;
@@ -32,12 +36,14 @@
 	const handleLogin = () => {
 		goto('/login');
 	};
+
+	const buttonDisabled = derived([signup, username, password], ([{ isLoading }, username, password]) => isLoading || username.length === 0 || password.length === 0);
 </script>
 
 <div class="root">
 	<LoginCard>
 		<Typography variant="lg">Sign Up</Typography>
-		<EmailPasswordForm on:submit={handleSubmit}>Sign Up</EmailPasswordForm>
+		<EmailPasswordForm {buttonDisabled} on:submit={handleSubmit}>Sign Up</EmailPasswordForm>
 		<Button color="secondary" disabled={$signup.isLoading} fullWidth on:click={handleLogin}>Login</Button>
 	</LoginCard>
 </div>
