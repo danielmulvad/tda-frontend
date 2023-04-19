@@ -10,7 +10,7 @@
 
 	const submitFormSchema = z.object({
 		email: z.string().email(),
-		password: z.string()
+		password: z.string().min(8)
 	});
 
 	const login = loginMutation({
@@ -36,7 +36,7 @@
 		goto('/signup');
 	};
 
-	const buttonDisabled = derived([login, username, password], ([{ isLoading }, username, password]) => isLoading || username.length === 0 || password.length === 0);
+	const buttonDisabled = derived([login, username, password], ([{ isLoading }, username, password]) => isLoading || username.length === 0 || password.length < 8);
 </script>
 
 <div class="root">

@@ -37,7 +37,7 @@
 		goto('/login');
 	};
 
-	const buttonDisabled = derived([signup, username, password], ([{ isLoading }, username, password]) => isLoading || username.length === 0 || password.length === 0);
+	const buttonDisabled = derived([signup, username, password], ([{ isLoading }, username, password]) => isLoading || username.length === 0 || password.length < 8);
 </script>
 
 <div class="root">
