@@ -23,6 +23,3 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tda:frontend-latest
-          secrets: |
-            "PRIVATE_CERTIFICATE_CERT=${{ secrets.PRIVATE_CERTIFICATE_CERT }}"
-            "PRIVATE_CERTIFICATE_KEY=${{ secrets.PRIVATE_CERTIFICATE_KEY }}"

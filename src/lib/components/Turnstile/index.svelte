@@ -34,7 +34,7 @@
 </script>
 
 <svelte:head>
-	{#if mounted}
+	{#if mounted && shouldRender}
 		<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" on:load={loadCallback} async></script>
 	{/if}
 </svelte:head>
