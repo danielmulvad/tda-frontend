@@ -23,7 +23,7 @@
 	<meta name="description" content="TradeTracker - private trading journal" />
 </svelte:head>
 <QueryClientProvider {client}>
-	<div class="app">
+	<div class="app" class:noLayout={hideLayout}>
 		{#if !hideLayout}
 			<Sidebar />
 		{/if}
@@ -43,5 +43,8 @@
 		grid-template-columns: auto 1fr;
 		font-family: monaco, monospace;
 		font-size: calc(var(--scale) * 0.875);
+	}
+	.noLayout {
+		grid-template-columns: 1fr;
 	}
 </style>
