@@ -14,12 +14,12 @@
 		font-size: var(--font-size-sm);
 		height: calc(var(--scale) * 2.5);
 		padding: calc(var(--scale) * 0.5) calc(var(--scale) * 0.75);
-		border: 1px solid var(--input);
+		border: calc(var(--scale) / 16) solid var(--input);
 		border-radius: calc(var(--scale) * 0.25);
 		outline: none;
 		transition: border-color 0.3s;
 	}
 	input:focus-visible {
-		box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--input), 0 0 #0000;
+		box-shadow: 0 0 0 calc(var(--scale) / 8) var(--background), 0 0 0 calc(var(--scale) / 4) var(--input), 0 0 #0000;
 	}
 </style>

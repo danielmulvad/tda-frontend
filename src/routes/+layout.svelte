@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import Navbar from '$lib/components/Navbar/index.svelte';
+	import Navbar from '$lib/components/layout/Navbar/index.svelte';
+	import Sidebar from '$lib/components/layout/Sidebar/index.svelte';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 	import 'normalize.css/normalize.css';
 
@@ -14,7 +15,7 @@
 	});
 	$: isPathnameLoginPage = $page.url.pathname === '/login/';
 	$: isPathnameSignupPage = $page.url.pathname === '/signup/';
-	$: hideNavbar = isPathnameLoginPage || isPathnameSignupPage;
+	$: hideLayout = isPathnameLoginPage || isPathnameSignupPage;
 </script>
 
 <svelte:head>
@@ -23,10 +24,11 @@
 </svelte:head>
 <QueryClientProvider {client}>
 	<div class="app">
-		{#if !hideNavbar}
-			<Navbar />
-		{/if}
+		<Sidebar />
 		<main>
+			{#if !hideLayout}
+				<Navbar />
+			{/if}
 			<slot />
 		</main>
 	</div>
@@ -35,7 +37,9 @@
 <style lang="scss">
 	@import './layout.scss';
 	.app {
+		display: grid;
+		grid-template-columns: auto 1fr;
 		font-family: monaco, monospace;
-		font-size: 0.875rem;
+		font-size: calc(var(--scale) * 0.875);
 	}
 </style>

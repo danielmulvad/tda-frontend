@@ -37,7 +37,7 @@
 	form {
 		display: flex;
 		flex-direction: column;
-		row-gap: 1rem;
+		row-gap: var(--scale);
 		width: 100%;
 	}
 </style>
