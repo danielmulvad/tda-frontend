@@ -24,7 +24,9 @@
 </svelte:head>
 <QueryClientProvider {client}>
 	<div class="app">
-		<Sidebar />
+		{#if !hideLayout}
+			<Sidebar />
+		{/if}
 		<main>
 			{#if !hideLayout}
 				<Navbar />
