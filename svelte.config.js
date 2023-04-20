@@ -12,15 +12,7 @@ const config = {
 		adapter: adapter({
 			// precompress handled by Cloudflare
 			precompress: false
-		}),
-		csp: {
-			directives: {
-				'script-src': ['self']
-			},
-			reportOnly: {
-				'script-src': ['self']
-			}
-		}
+		})
 	}
 };
 
