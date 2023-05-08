@@ -1,18 +1,19 @@
 <script lang="ts">
 	type Variant = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
+	export let element: string = 'span';
 	export let variant: Variant = 'md';
 
-	const xs = variant === 'xs';
-	const sm = variant === 'sm';
-	const md = variant === 'md';
-	const lg = variant === 'lg';
-	const xl = variant === 'xl';
+	$: xs = variant === 'xs';
+	$: sm = variant === 'sm';
+	$: md = variant === 'md';
+	$: lg = variant === 'lg';
+	$: xl = variant === 'xl';
 </script>
 
-<span class:xs class:sm class:md class:lg class:xl>
+<svelte:element this={element} class:xs class:sm class:md class:lg class:xl>
 	<slot />
-</span>
+</svelte:element>
 
 <style lang="scss">
 	.xs {

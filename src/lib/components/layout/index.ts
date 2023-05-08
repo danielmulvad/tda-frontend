@@ -1,35 +1,24 @@
 import { page } from '$app/stores';
+import { sidebarLinks } from '$lib/constants';
 import { derived } from 'svelte/store';
 
-type Route = {
+type BreadcrumbRoute = {
+	id: number;
 	pathname: string;
 	name: string;
-	parentPathname?: string;
+	parentId?: number;
 };
-
-export const routes: Route[] = [
-	{
-		pathname: '/',
-		name: 'Overview'
-	},
-	{
-		pathname: '/settings/',
-		name: 'Settings',
-		parentPathname: '/'
+function createBreadcrumb(routes: BreadcrumbRoute[], root: BreadcrumbRoute, reduced: BreadcrumbRoute[] = []): BreadcrumbRoute[] {
+	const { parentId } = root;
+	if (parentId !== undefined) {
+		const parent = routes.find(({ id }) => id === parentId);
+		if (parent) return createBreadcrumb(routes, parent, [root, ...reduced]);
 	}
-];
-
-function createBreadcrumb(route: Route, reduced: Route[] = []): Route[] {
-	const { parentPathname } = route;
-	if (parentPathname) {
-		const parent = routes.find(({ pathname }) => pathname === parentPathname);
-		if (parent) return createBreadcrumb(parent, [route, ...reduced]);
-	}
-	return [route, ...reduced];
+	return [root, ...reduced];
 }
 
-export const breadcrumb = derived<typeof page, Route[]>(page, ({ url }) => {
-	const found = routes.find((route) => route.pathname === url.pathname);
+export const breadcrumb = derived<typeof page, BreadcrumbRoute[]>(page, ({ url }) => {
+	const found = sidebarLinks.find((route) => route.pathname === url.pathname);
 	if (!found) return [];
-	return createBreadcrumb(found);
+	return createBreadcrumb(sidebarLinks, found);
 });

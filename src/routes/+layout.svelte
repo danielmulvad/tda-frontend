@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import Navbar from '$lib/components/layout/Navbar/index.svelte';
 	import Sidebar from '$lib/components/layout/Sidebar/index.svelte';
+	import { sidebarLinks } from '$lib/constants';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 	import 'normalize.css/normalize.css';
 
@@ -13,6 +14,7 @@
 			}
 		}
 	});
+	const topLevelLinks = sidebarLinks.filter((link) => link.pathname.split('/').length <= 3);
 	$: isPathnameLoginPage = $page.url.pathname === '/login/';
 	$: isPathnameSignupPage = $page.url.pathname === '/signup/';
 	$: hideLayout = isPathnameLoginPage || isPathnameSignupPage;
@@ -25,7 +27,7 @@
 <QueryClientProvider {client}>
 	<div class="app" class:noLayout={hideLayout}>
 		{#if !hideLayout}
-			<Sidebar />
+			<Sidebar links={topLevelLinks} />
 		{/if}
 		<main>
 			{#if !hideLayout}
@@ -37,7 +39,6 @@
 </QueryClientProvider>
 
 <style lang="scss">
-	@import './layout.scss';
 	.app {
 		display: grid;
 		grid-template-columns: auto 1fr;
