@@ -9,11 +9,11 @@ const api = async (inputUrl: string | URL, init?: RequestInit | undefined): Prom
 	const origin = env?.['PUBLIC_API_BASE_URL'] ?? pageObj.url.origin;
 	const url = new URL(`/api${inputUrl}`, origin);
 	const response = await fetch(url, { ...init, credentials });
-	if (!response.ok) {
-		throw new Error(response.statusText);
-	}
 	if (response.status === 401) {
 		goto('/login', { replaceState: true });
+	}
+	if (!response.ok) {
+		throw new Error(response.statusText);
 	}
 	return response;
 };

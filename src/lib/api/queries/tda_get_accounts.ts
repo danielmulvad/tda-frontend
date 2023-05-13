@@ -3,10 +3,7 @@ import { createQuery } from '../createQuery';
 
 const get_accounts = async (): Promise<object> => {
 	const response = await get('/get_accounts', {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json'
-		}
+		method: 'GET'
 	});
 	const json = await response.json();
 	return json;

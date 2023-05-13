@@ -1,5 +1,7 @@
 <script lang="ts">
-	import Typography from '$lib/components/Typography/index.svelte';
+	import AccountSummary from '$lib/widgets/AccountSummary.svelte';
 </script>
 
-<Typography>Howdy</Typography>
+<div>
+	<AccountSummary />
+</div>

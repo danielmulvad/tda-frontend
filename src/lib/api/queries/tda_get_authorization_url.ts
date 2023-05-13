@@ -12,10 +12,7 @@ const validate_get_authorization_url = async (data: unknown) => await schema.par
 
 const get_authorization_url = async (): Promise<Get_Authorization_Url> => {
 	const response = await get('/auth/providers/tda', {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json'
-		}
+		method: 'GET'
 	});
 	const json = await response.json();
 	const data = await validate_get_authorization_url(json);
