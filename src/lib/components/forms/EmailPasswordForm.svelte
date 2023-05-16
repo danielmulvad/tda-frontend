@@ -7,9 +7,9 @@
 	import Turnstile from '$lib/components/Turnstile/index.svelte';
 	import { derived, writable } from 'svelte/store';
 
-	export const username = writable('');
-	export const password = writable('');
-	export const buttonDisabled = derived([username, password], ([u, p]) => u.length === 0 || p.length === 0);
+	export let username = writable('');
+	export let password = writable('');
+	export let buttonDisabled = derived([username, password], ([u, p]) => u.length === 0 || p.length === 0);
 	export let showTurnstile: boolean = true;
 
 	const usernameTouched = writable(false);

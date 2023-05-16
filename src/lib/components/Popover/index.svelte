@@ -13,7 +13,6 @@
 	export let stopPropagation = false;
 	export let open = false;
 	let targetRef: HTMLElement;
-	let containerRef: HTMLElement;
 	$: targetRef?.ownerDocument?.addEventListener('click', (event) => {
 		if (open) {
 			if (targetRef.contains(event.target as Node)) {
@@ -50,7 +49,7 @@
 	const onMouseOut = action === 'hover' ? eventMouseOut : null;
 </script>
 
-<div class="popover" bind:this={containerRef}>
+<div class="popover">
 	<div
 		bind:this={targetRef}
 		class="target"
